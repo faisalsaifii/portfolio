@@ -1,5 +1,3 @@
-"use client";
-
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import EducationSection from "@/components/EducationSection";
@@ -9,19 +7,24 @@ import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
+import JsonLd from "@/components/JsonLd";
+import { generatePersonSchema } from "@/lib/seo-config";
 
 export default function Home() {
   return (
-    <main className="bg-background min-h-screen overflow-x-hidden">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <SkillsSection />
-      <EducationSection />
-      <ContactSection />
-      <Footer />
-    </main>
+    <>
+      <JsonLd schemas={[generatePersonSchema()]} />
+      <main className="bg-background min-h-screen overflow-x-hidden">
+        <Navbar />
+        <HeroSection />
+        <AboutSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <EducationSection />
+        <ContactSection />
+        <Footer />
+      </main>
+    </>
   );
 }

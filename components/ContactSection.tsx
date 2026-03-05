@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Mail, Github, Linkedin, ArrowUpRight } from "lucide-react";
