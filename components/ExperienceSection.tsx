@@ -8,7 +8,7 @@ const experiences = [
   {
     role: "Product Engineer",
     company: "Juspay Technologies",
-    period: "July 2023 – Present",
+    period: "July 2023 - Present",
     tech: "Python, Flask, PostgreSQL, React, Haskell, Rescript, Jenkins",
     highlights: [
       "Automated integration processes by 70% across multiple product teams",
@@ -20,7 +20,7 @@ const experiences = [
   {
     role: "Full Stack Developer",
     company: "Intech Circuits",
-    period: "Aug 2022 – Jan 2023",
+    period: "Aug 2022 - Jan 2023",
     tech: "Next.js, TypeScript, Tailwind CSS, Supabase",
     highlights: [
       "Increased company reach by 50% through landing page development",
@@ -30,7 +30,7 @@ const experiences = [
   {
     role: "Open Source Contributor",
     company: "GitHub",
-    period: "Aug 2022 – Present",
+    period: "Aug 2022 - Present",
     tech: "Various technologies",
     highlights: [
       "Contributed to Supabase — Backend as a Service platform",
@@ -40,7 +40,7 @@ const experiences = [
   {
     role: "Freelance Developer",
     company: "Fiverr",
-    period: "Aug 2023 – Dec 2023",
+    period: "Aug 2023 - Dec 2023",
     tech: "Python, Flask, React, TypeScript",
     highlights: [
       "Built Slack Apps and landing pages from scratch",
@@ -71,7 +71,6 @@ const ExperienceSection = () => {
         </motion.div>
 
         <div className="max-w-3xl mx-auto relative">
-          {/* Timeline line */}
           <div className="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-border" />
 
           {experiences.map((exp, i) => (
@@ -82,7 +81,6 @@ const ExperienceSection = () => {
               transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
               className="relative pl-12 md:pl-16 pb-12 last:pb-0 group"
             >
-              {/* Timeline dot */}
               <div className="absolute left-2.5 md:left-4 top-1 w-3 h-3 rounded-full bg-primary shadow-glow group-hover:scale-125 transition-transform" />
 
               <div className="p-5 md:p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/20 transition-all duration-300">

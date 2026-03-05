@@ -2,7 +2,24 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Trophy } from "lucide-react";
+import { ExternalLink, GraduationCap, Trophy } from "lucide-react";
+
+const education = [
+  {
+    title: "Bachelor of Technology — Information Technology",
+    institution: "Inderprastha Engineering College",
+    period: "Sept 2020 - June 2024",
+    achievement: "Won Hack n Crack Hackathon with project DevMeet",
+    url: "https://www.ipec.org.in",
+  },
+  {
+    title: "10+2 (PCM)",
+    institution: "Bharti Public School",
+    period: "April 2008 - 2020",
+    achievement: "Won website development contest",
+    url: "https://bps.edu.in",
+  },
+];
 
 const EducationSection = () => {
   const ref = useRef(null);
@@ -26,61 +43,45 @@ const EducationSection = () => {
         </motion.div>
 
         <div className="max-w-3xl mx-auto grid gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="p-6 md:p-8 rounded-2xl bg-gradient-card border border-border/50"
-          >
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
-                <GraduationCap size={24} />
-              </div>
-              <div>
-                <h3 className="font-heading text-lg font-semibold text-foreground">
-                  Bachelor of Technology — Information Technology
-                </h3>
-                <p className="text-primary text-sm font-medium mb-1">
-                  Inderprastha Engineering College
-                </p>
-                <p className="text-xs text-muted-foreground font-mono mb-3">
-                  Sept 2020 – June 2024
-                </p>
-                <div className="flex items-center gap-2 text-sm text-secondary-foreground">
-                  <Trophy size={14} className="text-primary" />
-                  Won Hack n Crack Hackathon with project DevMeet
+          {education.map((item, i) => (
+            <motion.a
+              key={item.title}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
+              className="group p-6 md:p-8 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 hover:shadow-glow transition-all duration-300"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
+                    <GraduationCap size={24} />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-lg font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="text-primary text-sm font-medium mb-1">
+                      {item.institution}
+                    </p>
+                    <p className="text-xs text-muted-foreground font-mono mb-3">
+                      {item.period}
+                    </p>
+                    <div className="flex items-center gap-2 text-sm text-secondary-foreground">
+                      <Trophy size={14} className="text-primary" />
+                      {item.achievement}
+                    </div>
+                  </div>
                 </div>
+                <ExternalLink
+                  size={18}
+                  className="text-muted-foreground group-hover:text-primary transition-colors shrink-0 mt-1"
+                />
               </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            className="p-6 md:p-8 rounded-2xl bg-gradient-card border border-border/50"
-          >
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
-                <GraduationCap size={24} />
-              </div>
-              <div>
-                <h3 className="font-heading text-lg font-semibold text-foreground">
-                  10+2 (PCM)
-                </h3>
-                <p className="text-primary text-sm font-medium mb-1">
-                  Bharti Public School
-                </p>
-                <p className="text-xs text-muted-foreground font-mono mb-3">
-                  April 2008 – 2020
-                </p>
-                <div className="flex items-center gap-2 text-sm text-secondary-foreground">
-                  <Trophy size={14} className="text-primary" />
-                  Won website development contest
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            </motion.a>
+          ))}
         </div>
       </div>
     </section>
