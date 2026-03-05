@@ -9,6 +9,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import JsonLd from "@/components/JsonLd";
 import { generatePersonSchema } from "@/lib/seo-config";
+import CursorEffect from "@/components/CursorEffect";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <EducationSection />
         <ContactSection />
         <Footer />
+        <CursorEffect />
       </main>
     </>
   );
