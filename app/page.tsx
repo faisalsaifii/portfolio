@@ -10,10 +10,13 @@ import SkillsSection from "@/components/SkillsSection";
 import JsonLd from "@/components/JsonLd";
 import { generatePersonSchema } from "@/lib/seo-config";
 import CursorEffect from "@/components/CursorEffect";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "sonner";
 
 export default function Home() {
   return (
-    <>
+    <TooltipProvider>
+      <Toaster />
       <JsonLd schemas={[generatePersonSchema()]} />
       <main className="bg-background min-h-screen overflow-x-hidden">
         <Navbar />
@@ -27,6 +30,6 @@ export default function Home() {
         <Footer />
         <CursorEffect />
       </main>
-    </>
+    </TooltipProvider>
   );
 }
