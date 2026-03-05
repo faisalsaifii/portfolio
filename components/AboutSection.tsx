@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Code2, Database, Server, Settings } from "lucide-react";
 
 const highlights = [
@@ -11,6 +11,56 @@ const highlights = [
   { icon: Database, label: "Database", desc: "PostgreSQL, MongoDB, MySQL" },
   { icon: Settings, label: "DevOps", desc: "Jenkins, Docker, Nix" },
 ];
+
+const HighlightCard = ({
+  item,
+  index,
+  isInView,
+}: {
+  item: (typeof highlights)[0];
+  index: number;
+  isInView: boolean;
+}) => {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    setMousePos({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos({ x: 0, y: 0 });
+  };
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+      className="group relative p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 hover:shadow-glow transition-all duration-300 text-center overflow-hidden"
+    >
+      <item.icon className="mx-auto mb-3 text-primary" size={28} />
+      <h3 className="font-heading font-semibold text-foreground mb-1">
+        {item.label}
+      </h3>
+      <p className="text-sm text-muted-foreground">{item.desc}</p>
+
+      {/* Cursor-tracking glow */}
+      <div
+        className="absolute w-40 h-40 bg-gradient-to-r from-primary/40 to-primary/10 rounded-full blur-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+        style={{
+          left: `${mousePos.x}px`,
+          top: `${mousePos.y}px`,
+          transform: "translate(-50%, -50%)",
+        }}
+      />
+    </motion.div>
+  );
+};
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -42,19 +92,12 @@ const AboutSection = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
           {highlights.map((item, i) => (
-            <motion.div
+            <HighlightCard
               key={item.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-              className="group p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 hover:shadow-glow transition-all duration-300 text-center"
-            >
-              <item.icon className="mx-auto mb-3 text-primary" size={28} />
-              <h3 className="font-heading font-semibold text-foreground mb-1">
-                {item.label}
-              </h3>
-              <p className="text-sm text-muted-foreground">{item.desc}</p>
-            </motion.div>
+              item={item}
+              index={i}
+              isInView={isInView}
+            />
           ))}
         </div>
       </div>

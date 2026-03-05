@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ExternalLink } from "lucide-react";
 
 const projects = [
@@ -31,6 +31,76 @@ const projects = [
   },
 ];
 
+const ProjectCard = ({
+  project,
+  index,
+  isInView,
+}: {
+  project: (typeof projects)[0];
+  index: number;
+  isInView: boolean;
+}) => {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    setMousePos({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos({ x: 0, y: 0 });
+  };
+
+  return (
+    <motion.a
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+      className="group relative p-6 md:p-8 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 hover:shadow-glow transition-all duration-300 overflow-hidden"
+    >
+      <div className="flex items-start justify-between mb-4">
+        <h3 className="font-heading text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+          {project.title}
+        </h3>
+        <ExternalLink
+          size={18}
+          className="text-muted-foreground group-hover:text-primary transition-colors shrink-0 mt-1"
+        />
+      </div>
+      <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+        {project.desc}
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {project.tags.map((tag) => (
+          <span
+            key={tag}
+            className="text-xs font-mono px-3 py-1 rounded-full bg-muted text-muted-foreground"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      {/* Cursor-tracking glow */}
+      <div
+        className="absolute w-40 h-40 bg-gradient-to-r from-primary/40 to-primary/10 rounded-full blur-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+        style={{
+          left: `${mousePos.x}px`,
+          top: `${mousePos.y}px`,
+          transform: "translate(-50%, -50%)",
+        }}
+      />
+    </motion.a>
+  );
+};
+
 const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -54,42 +124,12 @@ const ProjectsSection = () => {
 
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {projects.map((project, i) => (
-            <motion.a
+            <ProjectCard
               key={project.title}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-              className="group relative p-6 md:p-8 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 hover:shadow-glow transition-all duration-300"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="font-heading text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <ExternalLink
-                  size={18}
-                  className="text-muted-foreground group-hover:text-primary transition-colors shrink-0 mt-1"
-                />
-              </div>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-5">
-                {project.desc}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs font-mono px-3 py-1 rounded-full bg-muted text-muted-foreground"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Hover glow */}
-              <div className="absolute inset-0 rounded-2xl bg-primary/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-            </motion.a>
+              project={project}
+              index={i}
+              isInView={isInView}
+            />
           ))}
         </div>
       </div>

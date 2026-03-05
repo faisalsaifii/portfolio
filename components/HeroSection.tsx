@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -75,6 +75,11 @@ const HeroSection = () => {
                 icon: Linkedin,
                 href: "https://linkedin.com/in/faisalsaifii",
                 label: "LinkedIn",
+              },
+              {
+                icon: Twitter,
+                href: "https://twitter.com/faisalsaifiii",
+                label: "Twitter",
               },
               {
                 icon: Mail,
