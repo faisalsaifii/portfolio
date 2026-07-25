@@ -6,10 +6,10 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    title: "Fypera Labs",
-    desc: "A sleek landing page showcasing a modern tech brand with stunning visuals and responsive design.",
-    url: "https://fyperalabs.vercel.app",
-    tags: ["Landing Page", "React", "Design"],
+    title: "Billable",
+    desc: "Fast, Powerful Accounting & Inventory Management Software",
+    url: "https://billable.faisalsaifi.com",
+    tags: ["Accounting software", "Svelte", "Tauri"],
   },
   {
     title: "Intech Circuits",
@@ -20,13 +20,13 @@ const projects = [
   {
     title: "Hungy",
     desc: "Social media and food ordering web app combining community features with seamless food delivery.",
-    url: "https://hungy.vercel.app",
+    url: "https://hungy.faisalsaifi.com",
     tags: ["Social Media", "Food Tech", "Full Stack"],
   },
   {
     title: "DevMeet",
     desc: "Coding interview platform with live video conferencing and integrated development environment.",
-    url: "https://developermeet.vercel.app",
+    url: "https://devmeet.faisalsaifi.com",
     tags: ["WebRTC", "IDE", "Hackathon Winner"],
   },
 ];
