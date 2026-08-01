@@ -29,6 +29,12 @@ const projects = [
     url: "https://devmeet.faisalsaifi.com",
     tags: ["WebRTC", "IDE", "Hackathon Winner"],
   },
+  {
+    title: "Posters",
+    desc: "E-commerce website for selling posters",
+    url: "https://posters.faisalsaifi.com",
+    tags: ["E-commerce", "Web App", "Full Stack"],
+  },
 ];
 
 const ProjectCard = ({
