@@ -21,4 +21,4 @@ pnpm run dev
 
 ## 📬 Contact
 - GitHub: [@faisalsaifii](https://github.com/faisalsaifii)
-- LinkedIn: [linkedin.com/in/your-link](https://linkedin.com/in/faisalsaifii)
+- LinkedIn: [linkedin.com/in/faisalsaifii](https://linkedin.com/in/faisalsaifii)
