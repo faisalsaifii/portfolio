@@ -1,5 +1,4 @@
-# Faisal Saifii ✨  
-### Developer Portfolio
+# My Developer Portfolio ✨
 
 I build clean, modern, and user-focused web experiences.
 
