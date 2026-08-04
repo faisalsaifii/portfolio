@@ -7,7 +7,7 @@ import { ExternalLink } from "lucide-react";
 const projects = [
   {
     title: "Billable",
-    desc: "Fast, Powerful Accounting & Inventory Management Software",
+    desc: "Desktop accounting software for freelancers and small businesses, built with Svelte and Tauri.",
     url: "https://billable.faisalsaifi.com",
     tags: ["Accounting software", "Svelte", "Tauri"],
   },
@@ -28,6 +28,18 @@ const projects = [
     desc: "Coding interview platform with live video conferencing and integrated development environment.",
     url: "https://devmeet.faisalsaifi.com",
     tags: ["WebRTC", "IDE", "Hackathon Winner"],
+  },
+  {
+    title: "Posters",
+    desc: "E-Commerce platform for selling digital posters and templates, with a focus on design and creativity.",
+    url: "https://posters.faisalsaifi.com",
+    tags: ["E-Commerce", "Digital Products", "Next.js"],
+  },
+  {
+    title: "Rapid Typer",
+    desc: "Typing speed test web app with real-time performance tracking and competitive features.",
+    url: "https://faisalsaifii.github.io/rapid-typer",
+    tags: ["Typing", "Web App", "JavaScript"],
   },
 ];
 
