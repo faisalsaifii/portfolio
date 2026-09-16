@@ -1,37 +1,34 @@
+import { PROFILE } from "@/data/portfolio";
+
 const {
   NEXT_PUBLIC_SITE_URL = "https://faisalsaifi.com",
-  NEXT_PUBLIC_SITE_NAME = "Faisal - Full Stack Developer",
-  NEXT_PUBLIC_SITE_DESCRIPTION = "Experienced Full Stack Developer",
   NEXT_PUBLIC_TWITTER_URL = "https://twitter.com/faisalsaifiii",
-  NEXT_PUBLIC_GITHUB_URL = "https://github.com/faisalsaifii",
-  NEXT_PUBLIC_LINKEDIN_URL = "https://linkedin.com/in/faisalsaifii",
-  NEXT_PUBLIC_AUTHOR_NAME = "Faisal",
-  NEXT_PUBLIC_AUTHOR_EMAIL = "the.m.faisal.s@gmail.com",
-  NEXT_PUBLIC_OG_IMAGE = "/og-image.png",
+  NEXT_PUBLIC_OG_IMAGE = "/opengraph-image.png",
 } = process.env;
 
 export const siteConfig = {
-  name: NEXT_PUBLIC_SITE_NAME,
-  description: NEXT_PUBLIC_SITE_DESCRIPTION,
+  name: `${PROFILE.name} — ${PROFILE.role}`,
+  description: PROFILE.summary,
   url: NEXT_PUBLIC_SITE_URL,
   ogImage: `${NEXT_PUBLIC_SITE_URL}${NEXT_PUBLIC_OG_IMAGE}`,
-  author: NEXT_PUBLIC_AUTHOR_NAME,
-  email: NEXT_PUBLIC_AUTHOR_EMAIL,
+  author: PROFILE.name,
+  email: PROFILE.email,
   links: {
     twitter: NEXT_PUBLIC_TWITTER_URL,
-    github: NEXT_PUBLIC_GITHUB_URL,
-    linkedin: NEXT_PUBLIC_LINKEDIN_URL,
+    github: PROFILE.github,
+    linkedin: PROFILE.linkedin,
   },
 } as const;
 
 export const keywords = [
-  "Full Stack Developer",
+  "Software Engineer",
   "Product Engineer",
+  "Full Stack Developer",
   "React Developer",
   "Next.js",
+  "TypeScript",
   "Python Developer",
   "Node.js",
-  "TypeScript",
   "Web Development",
   "Software Engineering",
   "Frontend Development",
@@ -48,7 +45,7 @@ export function generatePersonSchema() {
     url: siteConfig.url,
     image: siteConfig.ogImage,
     description: siteConfig.description,
-    jobTitle: "Full Stack Developer",
+    jobTitle: PROFILE.role,
     email: siteConfig.email,
     sameAs: [
       siteConfig.links.twitter,

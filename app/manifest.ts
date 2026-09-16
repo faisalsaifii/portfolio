@@ -21,7 +21,7 @@ export default function manifest(): MetadataRoute.Manifest {
     screenshots: [
       {
         src: siteConfig.ogImage,
-        type: "image/svg+xml",
+        type: "image/png",
         sizes: "1200x630",
         form_factor: "wide",
       },

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { siteConfig, keywords } from "@/lib/seo-config";
-import "./globals.css";
+import "@/app/globals.css";
 
 const spaceGroteskSans = Space_Grotesk({
   variable: "--font-space-grotesk-sans",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: siteConfig.name,
-        type: "image/svg+xml",
+        type: "image/png",
       },
     ],
   },
