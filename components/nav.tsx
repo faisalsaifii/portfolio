@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring } from "motion/react";
 import { NAV_LINKS, PROFILE } from "@/data/portfolio";
@@ -50,6 +52,7 @@ export function Nav() {
   return (
     <>
       <motion.header
+        id="top"
         className="fixed inset-x-0 top-0 z-50"
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -62,7 +65,8 @@ export function Nav() {
               : "h-20 border-b border-transparent"
           }`}
         >
-          <button
+          <a
+            href="#top"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="group flex items-baseline gap-2 font-display text-base font-medium tracking-tight"
           >
@@ -70,13 +74,13 @@ export function Nav() {
             <span className="text-primary transition-transform duration-500 group-hover:translate-x-0.5">
               .
             </span>
-          </button>
+          </a>
 
           <nav className="hidden items-center gap-9 md:flex">
             {NAV_LINKS.map((l) => (
-              <button
+              <a
                 key={l.id}
-                onClick={() => scrollToId(l.id)}
+                href={`#${l.id}`}
                 className={`link-underline text-[13px] tracking-tight transition-colors ${
                   active === l.id
                     ? "text-foreground"
@@ -84,7 +88,7 @@ export function Nav() {
                 }`}
               >
                 {l.label}
-              </button>
+              </a>
             ))}
             <a
               href={`mailto:${PROFILE.email}`}
@@ -134,8 +138,9 @@ export function Nav() {
             </div>
             <nav className="flex flex-1 flex-col justify-center gap-2 px-6 pb-24">
               {NAV_LINKS.map((l, i) => (
-                <motion.button
+                <motion.a
                   key={l.id}
+                  href={`#${l.id}`}
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -143,7 +148,8 @@ export function Nav() {
                     duration: 0.6,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     setOpen(false);
                     setTimeout(() => scrollToId(l.id), 380);
                   }}
@@ -153,7 +159,7 @@ export function Nav() {
                     0{i + 1}
                   </span>
                   {l.label}
-                </motion.button>
+                </motion.a>
               ))}
               <motion.a
                 initial={{ opacity: 0 }}

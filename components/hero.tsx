@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import {
   motion,
@@ -136,13 +138,9 @@ export function Hero() {
             className="flex flex-wrap items-center gap-3 md:col-span-5 md:justify-end"
           >
             <Magnetic>
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("work")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="group relative overflow-hidden rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground"
+              <a
+                href="#work"
+                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   View my work
@@ -162,7 +160,7 @@ export function Hero() {
                   </svg>
                 </span>
                 <span className="absolute inset-0 origin-bottom scale-y-0 bg-foreground transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100" />
-              </button>
+              </a>
             </Magnetic>
             <Magnetic>
               <a

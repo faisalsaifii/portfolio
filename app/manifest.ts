@@ -6,11 +6,12 @@ export default function manifest(): MetadataRoute.Manifest {
     name: siteConfig.name,
     short_name: "Faisal",
     description: siteConfig.description,
-    start_url: siteConfig.url,
+    start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
+    background_color: "#000000",
     theme_color: "#000000",
-    scope: siteConfig.url,
+    scope: "/",
+    categories: ["portfolio", "technology"],
     icons: [
       {
         src: "/favicon.ico",

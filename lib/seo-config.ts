@@ -1,4 +1,4 @@
-import { PROFILE } from "@/data/portfolio";
+import { EDUCATION, PROFILE, PROJECTS } from "@/data/portfolio";
 
 const {
   NEXT_PUBLIC_SITE_URL = "https://faisalsaifi.com",
@@ -39,13 +39,26 @@ export const keywords = [
 
 export function generatePersonSchema() {
   return {
-    "@context": "https://schema.org",
     "@type": "Person",
     name: siteConfig.author,
     url: siteConfig.url,
     image: siteConfig.ogImage,
     description: siteConfig.description,
     jobTitle: PROFILE.role,
+    worksFor: {
+      "@type": "Organization",
+      name: PROFILE.company,
+      url: PROFILE.companyUrl,
+    },
+    alumniOf: EDUCATION.map((e) => ({
+      "@type": "CollegeOrUniversity",
+      name: e.school,
+      url: e.url,
+    })),
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bengaluru, India",
+    },
     email: siteConfig.email,
     sameAs: [
       siteConfig.links.twitter,
@@ -61,6 +74,39 @@ export function generatePersonSchema() {
       "PostgreSQL",
       "MongoDB",
       "Docker",
+    ],
+  };
+}
+
+export function generateProfilePageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@id": `${siteConfig.url}/#person`,
+        ...generatePersonSchema(),
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": `${siteConfig.url}/#profile`,
+        url: siteConfig.url,
+        name: siteConfig.name,
+        description: siteConfig.description,
+        dateModified: new Date().toISOString(),
+        mainEntity: { "@id": `${siteConfig.url}/#person` },
+      },
+      {
+        "@type": "ItemList",
+        name: "Selected projects by Faisal Saifi",
+        itemListElement: PROJECTS.map((p, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: p.url,
+          name: p.name,
+          image: `${siteConfig.url}${p.image}`,
+          description: p.description,
+        })),
+      },
     ],
   };
 }

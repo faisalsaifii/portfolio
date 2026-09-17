@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
-import { siteConfig, keywords } from "@/lib/seo-config";
+import { siteConfig, keywords, generateProfilePageSchema } from "@/lib/seo-config";
 import "@/app/globals.css";
 
 const spaceGroteskSans = Space_Grotesk({
@@ -20,10 +20,26 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  applicationName: siteConfig.name,
+  category: "technology",
   keywords: [...keywords],
   authors: [{ name: siteConfig.author }],
   creator: siteConfig.author,
   publisher: siteConfig.author,
+  formatDetection: {
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   alternates: {
     canonical: siteConfig.url,
   },
@@ -46,10 +62,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@faisalsaifiii",
+    creator: "@faisalsaifiii",
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@faisalsaifiii",
   },
 };
 
@@ -72,6 +89,12 @@ export default function RootLayout({
           name="google-adsense-account"
           content="ca-pub-3992129122215131"
         ></meta>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateProfilePageSchema()),
+          }}
+        />
       </head>
       <body
         className={`${spaceGroteskSans.variable} ${spaceGroteskMono.variable} antialiased`}
