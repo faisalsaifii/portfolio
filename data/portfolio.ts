@@ -49,17 +49,6 @@ export const PROJECTS: Project[] = [
     image: "/projects/billable.jpg",
   },
   {
-    slug: "intech",
-    name: "Intech Circuits",
-    description:
-      "Corporate landing page and PCB ordering flow for a manufacturing company. Drove a 50% increase in company reach.",
-    tags: ["Next.js", "Supabase", "Tailwind"],
-    year: "2022",
-    category: "Corporate",
-    url: "https://intechcircuits.com/",
-    image: "/projects/intech.jpg",
-  },
-  {
     slug: "devmeet",
     name: "DevMeet",
     description:
@@ -89,8 +78,19 @@ export const PROJECTS: Project[] = [
     tags: ["Next.js", "E-Commerce", "Digital Products"],
     year: "2023",
     category: "Commerce",
-    url: "https://posters.faisalsaifi.com/",
+    url: "https://posters.faisalsaifi.com",
     image: "/projects/posters.jpg",
+  },
+  {
+    slug: "loglift",
+    name: "LogLift",
+    description:
+      "Strength training app for logging workouts, tracking PRs, and monitoring progress",
+    tags: ["React Native", "Fitness", "Mobile App"],
+    year: "2022",
+    category: "Tool",
+    url: "https://loglift.faisalsaifi.com",
+    image: "/projects/loglift.png",
   },
   {
     slug: "rapid-typer",
@@ -102,6 +102,17 @@ export const PROJECTS: Project[] = [
     category: "Tool",
     url: "https://faisalsaifii.github.io/rapid-typer",
     image: "/projects/rapidtyper.jpg",
+  },
+  {
+    slug: "intech",
+    name: "Intech Circuits",
+    description:
+      "Corporate landing page and PCB ordering flow for a manufacturing company. Drove a 50% increase in company reach.",
+    tags: ["Next.js", "Supabase", "Tailwind"],
+    year: "2022",
+    category: "Corporate",
+    url: "https://intechcircuits.com/",
+    image: "/projects/intech.jpg",
   },
 ];
 

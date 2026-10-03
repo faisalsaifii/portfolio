@@ -46,7 +46,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
               loading="lazy"
               decoding="async"
               style={{ y: imgY }}
-              className="aspect-[16/10] w-full scale-[1.12] object-cover object-top transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.18]"
+              className="aspect-video w-full scale-[1.12] object-cover object-top transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.18]"
             />
           </motion.div>
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-80 transition-opacity duration-700 group-hover:opacity-40" />
