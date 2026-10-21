@@ -82,10 +82,21 @@ export const PROJECTS: Project[] = [
     image: "/projects/posters.jpg",
   },
   {
+    slug: "blocklin",
+    name: "Blocklin",
+    description:
+      "Neon synthwave falling-block puzzle game for Android with touch controls, combo scoring and a glowing board rim.",
+    tags: ["Godot", "Android", "Game"],
+    year: "2025",
+    category: "Game",
+    url: "https://blocklin.faisalsaifi.com",
+    image: "/projects/blocklin.png",
+  },
+  {
     slug: "loglift",
     name: "LogLift",
     description:
-      "Strength training app for logging workouts, tracking PRs, and monitoring progress",
+      "Free, offline-first Android app with 1,292 movements and form cues, plus fast set logging and PR tracking.",
     tags: ["React Native", "Fitness", "Mobile App"],
     year: "2022",
     category: "Tool",
